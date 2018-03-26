@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-if ! [[ $1 =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]
+if ! [[ $2 =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]
 then
     echo "Version number must be in x.y.z format" >&2
     exit 1
