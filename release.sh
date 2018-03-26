@@ -29,8 +29,6 @@ git checkout $releaseBranch
 git pull origin
 git merge $masterBranch
 
-git commit -m "Merge $masterBranch into $releaseBranch"
-
 printf "\n"
 echo "Merged $masterBranch into $releaseBranch"
 printf "\n"
@@ -38,8 +36,6 @@ printf "\n"
 # checkout to master and merge release branch into it
 git checkout $masterBranch
 git merge --no-ff $releaseBranch
-
-git commit -m "Merge $releaseBranch into $masterBranch"
 
 printf "\n"
 echo "Merged release $releaseBranch into $masterBranch"
