@@ -21,7 +21,7 @@ git checkout $masterBranch || exit 1
 git pull origin $masterBranch || exit 1
 
 printf "\n"
-echo "Got $masterBranch last version."
+echo "Switched to branch $masterBranch and pulled the last version."
 printf "\n"
 
 # checkout to release branch, gets its last version and merge master into it to resolve conflicts
@@ -30,7 +30,7 @@ git pull origin $releaseBranch || exit 1
 git merge $masterBranch -m "Merge $masterBranch into $releaseBranch" || exit 1
 
 printf "\n"
-echo "Merged $masterBranch into $releaseBranch"
+echo "Switched to branch $releaseBranch and merged $masterBranch into it"
 printf "\n"
 
 # checkout to master and merge release branch into it
@@ -38,7 +38,7 @@ git checkout $masterBranch || exit 1
 git merge --no-ff $releaseBranch -m "Merge $releaseBranch into $masterBranch" || exit 1
 
 printf "\n"
-echo "Merged release $releaseBranch into $masterBranch"
+echo "Switched to branch $masterBranch and merged $releaseBranch into it"
 printf "\n"
 
 # create tag for new version from -master
@@ -55,5 +55,7 @@ git push -d origin $releaseBranch || exit 1
 git branch -D $releaseBranch || exit 1
 
 printf "\n"
-echo "Deleted release $releaseBranch remotely and locally"
+echo "Deleted release $releaseBranch remotely and locally, you're in branch $masterBranch now!"
 echo "Congrats on your new release!"
+
+exit 0
