@@ -20,9 +20,9 @@ masterBranch=master
 git checkout $masterBranch 
 git pull origin 
 
-echo "\n"
+printf "\n"
 echo "Got $masterBranch last version."
-echo "\n"
+printf "\n"
 
 # checkout to release branch, gets its last version and merge master into it to resolve conflicts
 git checkout $releaseBranch
@@ -31,9 +31,9 @@ git merge $masterBranch
 
 git commit -m "Merge $masterBranch into $releaseBranch"
 
-echo "\n"
+printf "\n"
 echo "Merged $masterBranch into $releaseBranch"
-echo "\n"
+printf "\n"
 
 # checkout to master and merge release branch into it
 git checkout $masterBranch
@@ -41,23 +41,22 @@ git merge --no-ff $releaseBranch
 
 git commit -m "Merge $releaseBranch into $masterBranch"
 
-echo "\n"
+printf "\n"
 echo "Merged release $releaseBranch into $masterBranch"
-echo "\n"
+printf "\n"
 
 # create tag for new version from -master
 git tag $versionLabel
 git push --tags
 
-echo "\n"
+printf "\n"
 echo "Created tag $versionLabel into $masterBranch"
-echo "\n"
+printf "\n"
 
 # remove release branch remotely and locally
 git push -d origin $releaseBranch
 git branch -D $releaseBranch
 
-echo "\n"
+printf "\n"
 echo "Deleted release $releaseBranch remotely and locally"
 echo "Congrats on your new release!"
-echo "\n"
