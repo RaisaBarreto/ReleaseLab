@@ -28,8 +28,6 @@ printf "\n"
 git checkout $releaseBranch || exit 1
 git pull origin $releaseBranch || exit 1
 git merge $masterBranch || exit 1
-git commit -m "Merge $masterBranch into $releaseBranch" || exit 1
-git push origin $releaseBranch || exit 1
 
 printf "\n"
 echo "Merged $masterBranch into $releaseBranch"
